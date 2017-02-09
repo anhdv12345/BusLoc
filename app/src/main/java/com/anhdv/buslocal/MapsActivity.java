@@ -58,6 +58,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mSocket.connect();
+        mSocket.emit("start","");
     }
     private Emitter.Listener onConnect = new Emitter.Listener() {
         @Override
@@ -132,6 +133,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMyLoca
     @Override
     public boolean onMyLocationButtonClick() {
         Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        //socket.emit(‘start’, {});
+        //mSocket.emit("start","");
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false;
